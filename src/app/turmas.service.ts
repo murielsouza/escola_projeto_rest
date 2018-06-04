@@ -8,6 +8,7 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class TurmasService {
     API_URL = 'http://localhost:3000';
+    status = false;
 
     constructor(private http: HttpClient) {
     }
@@ -16,9 +17,14 @@ export class TurmasService {
         return this.http.get(this.API_URL + '/turmas');
     }
 
-    salvar(id: number, disciplinaId: number, professorId: number, ano: string, qtdAlunos: number) {
-        const turma = {disciplinaId: disciplinaId, professorId: professorId, ano: ano, qtdAlunos: qtdAlunos};
-        if (id) {
+    salvar(id: number, disciplinaId: number, professorId: number, ano: string, alunos: number) {
+        const turma = {disciplinaId: disciplinaId, professorId: professorId, ano: ano, alunos: alunos};
+        this.encontrar(id)
+            .subscribe(() => {
+                this.status = true;
+            }, () => this.status = false);
+
+        if (this.status) {
             return this.http.patch(this.API_URL + '/turmas/' + id, turma);
         } else {
             return this.http.post(this.API_URL + '/turmas', turma);

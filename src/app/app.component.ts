@@ -57,8 +57,8 @@ export class AppComponent {
     }
 
     salvar() {
-        this.turmasService.salvar(this.editando.id, this.editando.disciplinaId, this.editando.professorId, this.editando.ano, this.editando.qtdAlunos)
-            .subscribe(turma => {
+        this.turmasService.salvar(this.editando.id, this.editando.disciplinaId, this.editando.professorId, this.editando.ano, this.editando.alunos)
+            .subscribe(() => {
                     this.redefinir();
                     this.salvar_ok = true;
                     this.atualizarLista();
