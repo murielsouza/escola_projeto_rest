@@ -10,13 +10,13 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor= "let turma of turmas" [class.table-active]="editando && (editando.id === turma.id)">
+    <tr *ngFor= "let turma of turmas" (change)="buscarDisciplina(turma.disciplinaId)" [class.table-active]="editando && (editando.id === turma.id)">
       <td>
         <i *ngIf="editando && (editando.id === turma.id)" class="fa fa-pencil-square"> </i>
         {{turma.id}}
       </td>
-      <td> --construção</td>
-      <td> --construção </td>
+      <td> {{disciplina}}</td>
+      <td>{{buscaProfessor(turma.professorId)}}</td>
       <td>{{turma.ano}}</td>
       <td>{{turma.alunos}}</td>
       <td>

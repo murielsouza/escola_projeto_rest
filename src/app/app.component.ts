@@ -20,7 +20,7 @@ export class AppComponent {
     turmas = null;
     disciplinas = null;
     professores = null;
-    num = null;
+    disciplinaBsucada = null;
 
     constructor(private turmasService: TurmasService,  private disciplinasService: DisciplinasService, private professoresService: ProfessoresService) {
         this.atualizarLista();
@@ -50,7 +50,7 @@ export class AppComponent {
     buscarDisciplina(idDisciplina: number) {
         this.disciplinasService.encontrar(idDisciplina)
             .subscribe(disciplina => {
-                this.disciplinas = disciplina;
+                this.disciplinaBsucada = disciplina;
                 this.status_lista = true;
             }, () => this.status_lista = false);
 

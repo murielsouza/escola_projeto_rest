@@ -13,7 +13,7 @@ export class ListaDeTurmasComponent implements OnInit {
     professores = null;
 
     @Input()
-    disciplinas = null;
+    disciplina = null;
 
     @Input()
     editando = null;
@@ -42,5 +42,14 @@ export class ListaDeTurmasComponent implements OnInit {
     }
     buscarDisciplina(id) {
       this.onBuscarDisciplina.emit(id);
+    }
+
+    buscaProfessor(id){
+        for(let p of this.professores){
+            if(p.id == id){
+                return p.nome;
+            }
+        }
+        return false;
     }
 }
