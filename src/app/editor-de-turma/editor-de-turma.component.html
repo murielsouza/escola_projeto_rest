@@ -1,0 +1,38 @@
+<form #cadastro="ngForm" (submit)="salvar()">
+  <div class="form-group">
+    <label for="id">ID</label><br>
+    <input type="number" id="id" name="id" class="form-control" [(ngModel)]="turma.id" required>
+  </div>
+
+  <div>
+    <label for="disciplinas">Disciplina</label><br>
+    <select id="disciplinas" name="disciplinas" required class="form-control" [(ngModel)]="turma.disciplinaId">
+      <option *ngFor="let d of disciplina" [value]="d.id"> {{d.nome}} </option>
+    </select>
+  </div> <br>
+  <div>
+    <label for="professor">Professor</label><br>
+    <select id="professor" name="professor" required class="form-control" [(ngModel)]="turma.professorId">
+      <option *ngFor="let p of professor" [value]="p.id"> {{p.nome}} </option>
+    </select>
+  </div> <br>
+
+  <div class="form-group">
+    <label for="ano">Ano</label><br>
+    <input type="text" id="ano" name="ano" class="form-control" [(ngModel)]="turma.ano" required>
+  </div>
+
+  <div class="form-group">
+    <label for="qtd">Qtd. Alunos</label><br>
+    <input type="number" id="qtd" name="qtd" class="form-control" [(ngModel)]="turma.qtdAlunos" required>
+  </div>
+
+  <div class="text-right">
+    <button type="submit" class="btn btn-primary" [disabled]="!cadastro.valid">
+      <i class="fa fa-save"></i> Salvar
+    </button>
+    <button type="reset" class="btn btn-secondary" (click)="cancelar()">
+      Cancelar
+    </button>
+  </div>
+</form>

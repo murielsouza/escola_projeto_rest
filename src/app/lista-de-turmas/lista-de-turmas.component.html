@@ -1,0 +1,32 @@
+  <table class="table table-hover table-bordered">
+    <thead class="thead-light">
+    <tr>
+      <th>ID</th>
+      <th>Disciplina</th>
+      <th>Professor</th>
+      <th>Ano</th>
+      <th>Qtd. Alunos</th>
+      <th width="200">Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor= "let turma of turmas" [class.table-active]="editando && (editando.id === turma.id)">
+      <td>
+        <i *ngIf="editando && (editando.id === turma.id)" class="fa fa-pencil-square"> </i>
+        {{turma.id}}
+      </td>
+      <td> --construção</td>
+      <td> --construção </td>
+      <td>{{turma.ano}}</td>
+      <td>{{turma.alunos}}</td>
+      <td>
+        <button class="btn btn-sm btn-danger" (click)="excluir(turma)">
+          <i class="fa fa-trash"></i> Excluir
+        </button>
+        <button class="btn btn-sm btn-primary" (click)="editar(turma)">
+          <i class="fa fa-pencil-square"></i> Editar
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
